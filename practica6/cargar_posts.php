@@ -23,7 +23,10 @@ function cargarPosts(){
 }
 
 //Filtrar posts por categoria
+/*Se utiliza el operador de función nula. Devuelve la categoria seleccionada desde la URL (por eso GET), en caso contrario
+    devuelve un null. */
 $categoriaSeleccionada = $_GET['categoria'] ?? '';
+//Llama la funcion para cargar y ordenar los posts
 $posts = cargarPosts();
 if (!empty($categoriaSeleccionada)) {
     $posts = array_filter($posts, function ($post) use ($categoriaSeleccionada) {

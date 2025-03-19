@@ -3,7 +3,7 @@
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = $_POST['titulo'];
     $contenido = $_POST['contenido'];
-    $categorias = $_POST['categorias'];
+    $categorias = $_POST['categorias'] ?? [];
     $imagen = $_FILES['imagen'];
 
     if (empty($titulo) || empty($contenido)) {
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($imagen['error'] === UPLOAD_ERR_OK) {
         //Genera un ID a la imagen, anexando el nombre real de esta
         $nombreImagen = uniqid() . '-' . $imagen['name'];
-        $rutaImagen = 'assets/images' . $nombreImagen;
+        $rutaImagen = 'assets/images/' . $nombreImagen;
         move_uploaded_file($imagen['tmp_name'], $rutaImagen);
     }
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     //Guardar el nuevo post en el array
-    $posts[] = $posts;
+    $posts[] = $post;
 
     /*Escribir el string JSON en el archivo posts.json
         json_encode convierte el array de PHP en un string JSON*/

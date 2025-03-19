@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Crea un nuevo post</h1>
-    <form action="procesar_post.php" method="POST">
+    <form action="procesar_post.php" method="POST" enctype="multipart/form-data">
         <label>
             Título:
             <input type="text" name="titulo" required>
